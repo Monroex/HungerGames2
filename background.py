@@ -20,6 +20,7 @@ def step_background(w, colors, delay):
     Return value :: None
     '''
 
+    # TODO: Change this.
     time.sleep(delay)
 
 def dusk(w):
@@ -93,7 +94,7 @@ def test_step_background():
     print("Step fast.")
     step_background(w, colors, 0.2)
 
-    print("Close the window.")
+    pause(w, "close the window.")
     w.close()
 
 def test_all():

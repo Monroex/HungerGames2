@@ -91,7 +91,6 @@ def main():
     """
 
     w = GraphWin("The Hunger Games", 500, 500)
-    input("")
 
     while True:
         action = splash(w)
