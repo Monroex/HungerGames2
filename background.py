@@ -14,7 +14,7 @@ def step_background(w, colors, delay):
 
     Side effects
 
-    Change the background of w to each of the colors in the provided list in sequence.
+    Changes the background of w to each of the colors in the provided list in sequence.
     The speed of the color sequence is controlled by the delay.
 
     Return value :: None
@@ -65,13 +65,13 @@ def init():
     w.setBackground("white")
     return w
 
-def pause(w, msg):
+def click_to(w, msg):
     print("Click anywhere in the window to %s" % msg)
     print("  ==> You clicked on %s" % w.getMouse())
 
 def test_from_dusk_to_dawn(w):
 
-    pause(w, "go from dusk ...")
+    click_to(w, "go from dusk ...")
 
     dusk(w)
     dawn(w)
@@ -85,20 +85,20 @@ def test_step_background(w):
 
     print("Color sequence %s" % colors)
 
-    pause(w, "step the background slow.")
+    click_to(w, "step the background slow.")
     step_background(w, colors, 1)
 
-    pause(w, "step the background fast.")
+    click_to(w, "step the background fast.")
     step_background(w, colors, 0.2)
 
 def test_set_background(w):
-    pause(w, "set the background to yellow.")
+    click_to(w, "set the background to yellow.")
     w.setBackground("yellow")
 
-    pause(w, "set the background to red.")
+    click_to(w, "set the background to red.")
     w.setBackground("red")
 
-    pause(w, "set the background to white.")
+    click_to(w, "set the background to white.")
     w.setBackground("white")
 
 def main():
@@ -108,7 +108,7 @@ def main():
     # test_step_background(w)
     # test_from_dusk_to_dawn(w)
 
-    pause(w, "close the window.")
+    click_to(w, "close the window.")
     w.close()
 
 if __name__ == "__main__":
