@@ -69,37 +69,29 @@ def pause(w, msg):
     print("Click anywhere in the window to %s" % msg)
     print("  ==> You clicked on %s" % w.getMouse())
 
-def test_from_dusk_to_dawn():
-    w = init()
+def test_from_dusk_to_dawn(w):
 
-    print("From dusk ...")
+    pause(w, "go from dusk ...")
+
     dusk(w)
-
-    print("... to dawn.")
     dawn(w)
 
-    pause(w, "close the window.")
-    w.close()
+    print("... to dawn.")
 
-def test_step_background():
-    w = init()
+
+def test_step_background(w):
 
     colors = sequence()
 
     print("Color sequence %s" % colors)
 
-    print("Step slow.")
+    pause(w, "step the background slow.")
     step_background(w, colors, 1)
 
-    print("Step fast.")
+    pause(w, "step the background fast.")
     step_background(w, colors, 0.2)
 
-    pause(w, "close the window.")
-    w.close()
-
-def test_all():
-    w = init()
-
+def test_set_background(w):
     pause(w, "set the background to yellow.")
     w.setBackground("yellow")
 
@@ -109,26 +101,15 @@ def test_all():
     pause(w, "set the background to white.")
     w.setBackground("white")
 
-    pause(w, "step the background slowly.")
-    colors = ["red", "blue", "pink", "green", "orange", "white"]
-    step_background(w, colors, 1)
+def main():
+    w = init()
 
-    pause(w, "step the background quickly.")
-    step_background(w, colors, 0.2)
-
-    pause(w, "dim the background using dusk().")
-    dusk(w)
-
-    pause(w, "brighten the background using dawn().")
-    dawn(w)
+    test_set_background(w)
+    # test_step_background(w)
+    # test_from_dusk_to_dawn(w)
 
     pause(w, "close the window.")
     w.close()
-
-def main():
-    # test_step_background()
-    # test_from_dusk_to_dawn()
-    test_all()
 
 if __name__ == "__main__":
     main()
