@@ -20,8 +20,10 @@ def step_background(w, colors, delay):
     Return value :: None
     '''
 
-    # TODO: Change this.
-    time.sleep(delay)
+    for color in colors:
+        w.setBackground(color)
+        time.sleep(delay)
+        
 
 def dusk(w):
     '''
@@ -36,9 +38,9 @@ def dusk(w):
     Return value :: None
     '''
 
-    colors = dusk_colors()
+    step_background(w, dusk_colors(), 0.05)
 
-    # TODO: use step_background()
+    
 
 def dawn(w):
     '''
@@ -53,9 +55,7 @@ def dawn(w):
     Return value :: None
     '''
 
-    colors = dawn_colors()
-
-    # TODO: use step_background()
+    step_background(w, dawn_colors(), 0.05)
 
 def sequence():
     return ["red", "blue", "pink", "green", "orange", "white"]

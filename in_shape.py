@@ -10,10 +10,14 @@ def in_circle(p, c):
       True if p is inside the circle c, otherwise False.
     """
 
-    # TODO: Add code here.
+    dx = c.getCenter().x - p.x
+    dy = c.getCenter().y - p.y
+    distance = dx**2 + dy **2
 
-    # TODO: Change this
-    return False
+    if distance >= c.getRadius()**2:
+        return False
+    else:
+        return True
 
 def in_rectangle(p, r):
     """
@@ -25,10 +29,10 @@ def in_rectangle(p, r):
       True if p is inside the rectangle r, otherwise False.
     """
 
-    # TODO: Add code here.
-
-    # TODO: Change this
-    return False
+    if r.p1.x <= p.x <= r.p2.x and r.p1.y <= p.y <= r.p2.y:
+        return True
+    else:
+        return False
 
 def pause(w, msg):
     print("Click anywhere in the window %s" % msg)

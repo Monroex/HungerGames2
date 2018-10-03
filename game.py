@@ -2,9 +2,11 @@ from graphics import *
 from sys      import exit
 from time     import sleep
 from utils    import show, hide, take, shuffle
-from splash   import splash
+from splash   import splash, handle_quit
 from grid     import Grid
 from sprite   import Sprite
+
+
 
 def move_position(position, key):
     '''
@@ -21,7 +23,17 @@ def move_position(position, key):
 
     (x, y) = position
 
-    # TODO: Add code here.
+    if key == "Right":
+        x = (x+1)%5
+
+    if key == "Left":
+        x = (x-1)%5
+
+    if key == "Up":
+        y = (y-1)%5
+
+    if key == "Down":
+        y = (y+1)%5
 
     return (x, y)
 
@@ -74,8 +86,10 @@ def game(w):
         print(key)
         move_hero(hero, key)
 
-        # TODO: Make the game end.
+        if eat(hero, food):
+            play = False
 
+    
     print("Game over!")
     hide(objects)
 

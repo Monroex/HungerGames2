@@ -13,9 +13,9 @@ def bounce(text):
     return value: none.
     """
 
-    # TODO: Change this.
-
-    time.sleep(0.05)
+    for size in range(27):
+        text.setSize(5+size)
+        time.sleep(0.05)
 
 def click(w, msg):
     print("Click anywhere in the window %s" % msg)

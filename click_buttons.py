@@ -48,6 +48,9 @@ def main():
 
         if in_circle(p, play.getShape()):
             handle_play()
+        elif in_rectangle(p, quit.getShape()):
+            handle_quit(w)
+        
 
 def window():
     w = GraphWin("Test window", 500, 500)

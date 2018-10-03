@@ -4,23 +4,20 @@ from  background import dusk, dawn
 from  bounce     import bounce
 from  button     import Button
 from  in_shape   import in_circle, in_rectangle
-from  utils      import show, hide, random_color_fill
+from  utils      import show, hide, random_color_fill, shuffle
 
 def make_title(w):
     (x, y) = (w.getWidth() / 2, w.getWidth() / 3)
     p = Point(x, y)
 
-    # TODO: Change this.
-    t = Text(p, "The Name of the Game")
-
-    # TODO: Change this.
-    t.setTextColor("blue")
+    t = Text(p, "The Hunger Games")
+    t.setTextColor("yellow")
 
     return t
 
 def make_egg():
     c = Circle(Point(250, -110), 200)
-    c.setFill("blue") # TODO: Change this.
+    c.setFill("black") # TODO: Change this.
     return c
 
 def make_buttons():
@@ -36,12 +33,12 @@ def make_buttons():
 
 def init(window):
 
-    # TODO: Make the window background dim from white to black.
+    dusk(window)
 
     title = make_title(window)
     title.draw(window)
 
-    # TODO: Make the title text bounce.
+    bounce(title)
 
     time.sleep(0.5)
     egg = make_egg()
@@ -49,7 +46,7 @@ def init(window):
     (play, quit) = make_buttons()
 
     # TODO: Add the play button to the list of objects.
-    objects = [egg]
+    objects = [egg, play, quit]
 
     show(window, objects)
 
@@ -58,15 +55,16 @@ def init(window):
 def handle_egg(egg, title):
     print("  ==> Inside the Easter Egg circle.")
 
-    # TODO: Make the Easter egg circle change to a random color.
-
+    rcolor = shuffle(["blue", "green", "yellow", "orange", "purple", "pink", "red"]).pop()
+    egg.setFill(rcolor)
     bounce(title)
 
+    return "splash"
 def handle_play(w, objects):
     print("  ==> Inside the play button circle.")
 
-    # TODO: Hide the objects.
-
+    hide(objects)
+    
     dawn(w)
     return "play"
 
@@ -74,7 +72,8 @@ def handle_quit(w, objects):
     print("  ==> Inside the quit button rectangle")
     hide(objects)
 
-    # TODO: Fade the window background from black to white.
+    dawn(w)
+    w.close()
 
     return "quit"
 
@@ -90,6 +89,11 @@ def action(w, egg, title, play, quit):
 
         if in_rectangle(click, quit.shape):
             state = handle_quit(w, objects)
+        elif in_circle(click, play.shape):
+            state = handle_play(w, objects)
+        elif in_circle(click, egg):
+            state = handle_egg(egg, title)
+        
 
         # TODO: Add code here to detect and handle click on the
         # Easter egg and play button.
